@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: securewallet
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:securewallet;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: ${DB_DIALECT:org.hibernate.dialect.H2Dialect}
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+securewallet:
+  jwt:
+    secret: ${JWT_SECRET:dGhpcyBpcyBhIHZlcnkgbG9uZyBzZWNyZXQga2V5IGZvciBqd3QgdG9rZW4gZ2VuZXJhdGlvbiBpbiBzZWN1cmV3YWxsZXQgYXBwbGljYXRpb24gd2hpY2ggc2hvdWxkIGJlIGF0IGxlYXN0IDUxMiBiaXRz}
+    access-token-expiration: ${JWT_ACCESS_EXPIRATION:3600000}
+    refresh-token-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    com.securewallet: INFO
+    org.hibernate.SQL: WARN
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

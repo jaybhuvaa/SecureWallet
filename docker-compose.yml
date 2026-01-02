@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DATABASE_URL=jdbc:postgresql://db:5432/securewallet
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - DB_DRIVER=org.postgresql.Driver
+      - DB_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - JWT_SECRET=dGhpcyBpcyBhIHZlcnkgbG9uZyBzZWNyZXQga2V5IGZvciBqd3QgdG9rZW4gZ2VuZXJhdGlvbiBpbiBzZWN1cmV3YWxsZXQgYXBwbGljYXRpb24gd2hpY2ggc2hvdWxkIGJlIGF0IGxlYXN0IDUxMiBiaXRz
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - securewallet-network
+
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=securewallet
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - securewallet-network
+
+volumes:
+  postgres_data:
+
+networks:
+  securewallet-network:
+    driver: bridge

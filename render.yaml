@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: securewallet
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: securewallet-db
+          property: connectionString
+    healthCheckPath: /actuator/health
+
+databases:
+  - name: securewallet-db
+    databaseName: securewallet
+    user: securewallet
