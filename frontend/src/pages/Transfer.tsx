@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, ArrowLeftRight, DollarSign, FileText } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useWallet } from '../hooks/useWallet';
-import { useSettings } from '../hooks/useSettings.tsx';
-import { useNotifications } from '../hooks/useNotifications.tsx';
+import { useSettings } from '../hooks/useSettings';
+import { useNotifications } from '../hooks/useNotifications';
 import { getWalletTypeIcon } from '../utils/formatters';
-import type { Wallet } from '../types';
+import type { Wallet, Transaction } from '../types';
 
 type TransactionMode = 'deposit' | 'withdraw' | 'transfer';
 
@@ -94,7 +94,7 @@ const Transfer = () => {
 
             if (result.meta.requestStatus === 'fulfilled') {
                 // Add notification for the transaction
-                const transaction = result.payload;
+                const transaction = result.payload as Transaction;
                 addTransactionNotification(transaction);
 
                 toast.success(
