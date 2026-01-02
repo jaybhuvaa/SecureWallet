@@ -14,7 +14,7 @@ import {
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { useAuth } from '../hooks/useAuth';
 import { useWallet } from '../hooks/useWallet';
-import { useSettings } from '../hooks/useSettings.tsx';
+import { useSettings } from '../hooks/useSettings';
 import { formatRelativeTime, getWalletTypeColor, getTransactionTypeColor } from '../utils/formatters';
 
 const containerVariants = {

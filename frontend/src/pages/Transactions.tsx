@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Filter, ArrowUpRight, ArrowDownRight, ArrowLeftRight, X, RefreshCw } from 'lucide-react';
 import { useWallet } from '../hooks/useWallet';
-import { useSettings } from '../hooks/useSettings.tsx';
+import { useSettings } from '../hooks/useSettings';
 import { formatDateTime, getStatusColor, getTransactionTypeColor } from '../utils/formatters';
 import type { TransactionType } from '../types';
 

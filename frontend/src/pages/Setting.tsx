@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../hooks/useAuth';
-import { useSettings } from '../hooks/useSettings.tsx';
+import { useSettings } from '../hooks/useSettings';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -63,11 +63,11 @@ const Toggle = ({ enabled, onChange }: ToggleProps) => (
     </button>
 );
 
-const Modal = ({ isOpen, onClose, title, children }: {
-    isOpen: boolean;
-    onClose: () => void;
-    title: string;
-    children: React.ReactNode
+const Modal = ({ isOpen, onClose, title, children }: { 
+    isOpen: boolean; 
+    onClose: () => void; 
+    title: string; 
+    children: React.ReactNode 
 }) => (
     <AnimatePresence>
         {isOpen && (
@@ -117,12 +117,12 @@ const mockPaymentMethods = [
 
 const Settings = () => {
     const { user } = useAuth();
-    const {
-        settings,
-        updateCurrency,
-        updateLanguage,
-        updateNotifications,
-        updateTwoFactor
+    const { 
+        settings, 
+        updateCurrency, 
+        updateLanguage, 
+        updateNotifications, 
+        updateTwoFactor 
     } = useSettings();
 
     // Modal states
@@ -189,7 +189,7 @@ const Settings = () => {
             settings: settings,
             exportedAt: new Date().toISOString(),
         };
-
+        
         const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -197,7 +197,7 @@ const Settings = () => {
         a.download = 'securewallet-data-export.json';
         a.click();
         URL.revokeObjectURL(url);
-
+        
         toast.success('Data exported successfully!');
     };
 
@@ -374,7 +374,7 @@ const Settings = () => {
                         <Toggle enabled={settings.twoFactorEnabled} onChange={handleToggle2FA} />
                     </div>
 
-                    <button
+                    <button 
                         onClick={() => setPasswordModalOpen(true)}
                         className="w-full flex items-center justify-between p-4 rounded-xl bg-navy-50 dark:bg-navy-800 hover:bg-navy-100 dark:hover:bg-navy-700 transition-colors"
                     >
@@ -385,7 +385,7 @@ const Settings = () => {
                         <ChevronRight className="w-5 h-5 text-navy-400" />
                     </button>
 
-                    <button
+                    <button 
                         onClick={() => setPaymentModalOpen(true)}
                         className="w-full flex items-center justify-between p-4 rounded-xl bg-navy-50 dark:bg-navy-800 hover:bg-navy-100 dark:hover:bg-navy-700 transition-colors"
                     >
@@ -401,7 +401,7 @@ const Settings = () => {
                         <ChevronRight className="w-5 h-5 text-navy-400" />
                     </button>
 
-                    <button
+                    <button 
                         onClick={() => setSessionsModalOpen(true)}
                         className="w-full flex items-center justify-between p-4 rounded-xl bg-navy-50 dark:bg-navy-800 hover:bg-navy-100 dark:hover:bg-navy-700 transition-colors"
                     >
