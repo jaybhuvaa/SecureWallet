@@ -18,10 +18,7 @@ import {
   Check,
   AlertCircle,
   TrendingUp,
-  TrendingDown,
-  Shield,
-  CreditCard,
-  Trash2,
+  Shield
 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { useNotifications } from '../hooks/useNotifications';
