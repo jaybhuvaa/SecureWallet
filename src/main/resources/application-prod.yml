@@ -2,9 +2,9 @@ spring:
   application:
     name: securewallet
   datasource:
-    url: ${DATABASE_URL:}
-    username: ${DB_USERNAME:}
-    password: ${DB_PASSWORD:}
+    url: jdbc:postgresql://postgres.railway.internal:5432/railway
+    username: postgres
+    password: mWVHQVTGIxYWwhAezUhNYndBjXKDOJdA
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
