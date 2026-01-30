@@ -2,7 +2,7 @@
 
 A production-grade digital banking application demonstrating enterprise Java development with Spring Boot, React, and modern design patterns.
 
-![SecureWallet Dashboard](https://via.placeholder.com/800x400?text=SecureWallet+Dashboard)
+![SecureWallet Dashboard]((https://securewallet-production.up.railway.app/))
 
 ## ✨ Features
 
